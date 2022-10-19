@@ -1,0 +1,16 @@
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.exe
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.deps.json
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.runtimeconfig.json
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.runtimeconfig.dev.json
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.dll
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\bin\Debug\netcoreapp3.1\WebBrowserApp.pdb
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.csproj.AssemblyReference.cache
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.Form1.resources
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.csproj.GenerateResource.cache
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.AssemblyInfoInputs.cache
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.AssemblyInfo.cs
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.csproj.CoreCompileInputs.cache
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.dll
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.pdb
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.genruntimeconfig.cache
