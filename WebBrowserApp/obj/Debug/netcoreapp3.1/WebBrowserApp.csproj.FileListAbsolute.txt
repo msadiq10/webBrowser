@@ -14,3 +14,7 @@ D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserA
 D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.dll
 D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.pdb
 D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.genruntimeconfig.cache
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.History.resources
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.Properties.Resources.resources
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.Favorites.resources
+D:\Sadiq\Uni\Year 4\F21SC\csharp\coursework\webBrowser\WebBrowserApp\WebBrowserApp\obj\Debug\netcoreapp3.1\WebBrowserApp.Settings.resources
