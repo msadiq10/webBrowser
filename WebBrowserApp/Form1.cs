@@ -25,32 +25,82 @@ namespace WebBrowserApp
             InitializeComponent();
         }
 
-        public string searchText { get; set; }
+        public string searchText {
+            get
+            {
+                return this.searchBox.Text;
+            }
+            set
+            {
+                this.searchBox.Text = value;
+            }
+        }
+
+        public Panel Panel1
+        {
+            get
+            {
+                return this.favoritePanel;
+            }
+            set
+            {
+                this.favoritePanel = value;
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             home();
             load();
+            loadFavorites();
         }
 
+        private void loadFavorites()
+        {
+            favoritePanel.Controls.Clear();
+            StreamReader srf = new StreamReader(System.IO.Path.GetFullPath("favorites.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
+            string fav = "";
+            int countStep = 0;
+            int y = 10;
+            Favorites favoritesForm = new Favorites(this) { TopLevel = false };
+            favoritesForm.FormBorderStyle = FormBorderStyle.None;
+            while ((fav = srf.ReadLine()) != null)
+            {
+                Label favorite = new Label();
+                favoritesForm.Controls.Add(favorite);
+                favorite.AutoSize = true;
+                favorite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                favorite.Location = new System.Drawing.Point(10, y+countStep*35);
+                favorite.Name = "favorite"+(countStep+1).ToString();
+                favorite.Size = new System.Drawing.Size(67, 20);
+                favorite.TabIndex = 0;
+                favorite.Text = fav;
+                favorite.Click += new System.EventHandler(favoritesForm.favorite_Click);
+                countStep += 1;
+            }
+            srf.Close();
+            favoritePanel.Controls.Add(favoritesForm);
+            favoritesForm.Show();
+        }
         private void home()
         {
             string temp = "";
             StreamReader sr1 = new StreamReader(System.IO.Path.GetFullPath("home.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
             temp = sr1.ReadLine();
-            if (temp != null)
-                url = temp;
+            if (temp != "")
+                searchBox.Text = temp;
+            else
+                searchBox.Text = "https://www.google.com/";
             sr1.Close();
-            searchBox.Text = url;
+            url = searchBox.Text;
             searchText = searchBox.Text.ToString();
         }
 
-        private async Task load()
+        public async Task load()
         {
             using var client = new HttpClient();
             string temp1 = "";
-            if(url == "")
-                url = searchBox.Text;
+            url = searchText;
             //searchBox.Text = url;
             searchText = searchBox.Text.ToString();
             label3.Text = searchText;
@@ -144,13 +194,35 @@ namespace WebBrowserApp
 
         private void favoriteButton_Click(object sender, EventArgs e)
         {
+            //StreamReader srf = new StreamReader(System.IO.Path.GetFullPath("favorites.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
+            string fav = "";
+            int countStep = 0;
+            int y = 10;
             if (favoritePanel.Visible == false)
             {
                 favoritePanel.Visible = true;
-                Favorites favoritesForm = new Favorites() { TopLevel = false };
-                favoritesForm.FormBorderStyle = FormBorderStyle.None;
-                favoritePanel.Controls.Add(favoritesForm);
-                favoritesForm.Show();
+                loadFavorites();
+                //Favorites favoritesForm = new Favorites(this) { TopLevel = false };
+                //favoritesForm.FormBorderStyle = FormBorderStyle.None;
+
+                //while ((fav = srf.ReadLine()) != null)
+                //{
+                //    Label favorite = new Label();
+                //    favoritesForm.Controls.Add(favorite);
+                //    favorite.AutoSize = true;
+                //    favorite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                //    favorite.Location = new System.Drawing.Point(10, y+countStep*35);
+                //    favorite.Name = "favorite"+(countStep+1).ToString();
+                //    favorite.Size = new System.Drawing.Size(67, 20);
+                //    favorite.TabIndex = 0;
+                //    favorite.Text = fav;
+                //    favorite.Click += new System.EventHandler(favoritesForm.favorite_Click);
+                //    countStep += 1;
+                //}
+                //srf.Close();
+
+                //favoritePanel.Controls.Add(favoritesForm);
+                //favoritesForm.Show();
                 historyPanel.Visible = false;
                 downloadPanel.Visible = false;
                 settingsPanel.Visible = false;
@@ -160,6 +232,7 @@ namespace WebBrowserApp
                 favoritePanel.Visible = false;
             }
         }
+
 
         private void bulkDownload_Click(object sender, EventArgs e)
         {
