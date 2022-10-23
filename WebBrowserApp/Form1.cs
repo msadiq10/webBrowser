@@ -99,7 +99,9 @@ namespace WebBrowserApp
         public async Task load()
         {
             using var client = new HttpClient();
-            string temp1 = "";
+            string hisString = "";
+            int countStep = 0;
+            int y = 10;
             url = searchText;
             //searchBox.Text = url;
             searchText = searchBox.Text.ToString();
@@ -133,15 +135,32 @@ namespace WebBrowserApp
 
                 richTextBox1.Text = content;
             }
-            try
+
+            StreamWriter swh = new StreamWriter(System.IO.Path.GetFullPath("history.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"), true);
+            swh.WriteLine(url);
+            swh.Close();
+
+            History historyForm = new History(this) { TopLevel = false };
+            historyForm.FormBorderStyle = FormBorderStyle.None;
+            StreamReader srh = new StreamReader(System.IO.Path.GetFullPath("history.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
+            historyPanel.Controls.Clear();
+            while ((hisString = srh.ReadLine()) != null)
             {
-                temp1 = System.IO.Path.GetFullPath("home.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/","/txtfiles/");
-                label5.Text = temp1;
+                Label historyLabel = new Label();
+                historyForm.Controls.Add(historyLabel);
+                historyLabel.AutoSize = true;
+                historyLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                historyLabel.Location = new System.Drawing.Point(10, y + countStep * 35);
+                historyLabel.Name = "history" + (countStep + 1).ToString();
+                historyLabel.Size = new System.Drawing.Size(67, 20);
+                historyLabel.TabIndex = 0;
+                historyLabel.Text = hisString;
+                historyLabel.Click += new System.EventHandler(historyForm.history_Click);
+                countStep += 1;
             }
-            catch(Exception e)
-            {
-                label5.Text = e.Message.ToString();
-            }
+            srh.Close();
+            historyPanel.Controls.Add(historyForm);
+            historyForm.Show();
         }
 
         private void reload(object sender, EventArgs e)
@@ -178,10 +197,10 @@ namespace WebBrowserApp
             if(historyPanel.Visible == false)
             {
                 historyPanel.Visible = true;
-                History historyForm = new History() { TopLevel = false};
-                historyForm.FormBorderStyle = FormBorderStyle.None;
-                historyPanel.Controls.Add(historyForm);
-                historyForm.Show();
+                ////History historyForm = new History(this) { TopLevel = false};
+                ////historyForm.FormBorderStyle = FormBorderStyle.None;
+                ////historyPanel.Controls.Add(historyForm);
+                ////historyForm.Show();
                 favoritePanel.Visible = false;
                 downloadPanel.Visible = false;
                 settingsPanel.Visible = false;

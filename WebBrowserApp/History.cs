@@ -10,11 +10,18 @@ namespace WebBrowserApp
 {
     public partial class History : Form
     {
-        public History()
+        Form1 f1;
+        public History(Form1 frm1)
         {
             InitializeComponent();
+            this.f1 = frm1;
         }
 
-
+        public void history_Click(object sender, EventArgs e)
+        {
+            Label lbl = (Label)sender;
+            f1.searchText = lbl.Text;
+            f1.load();
+        }
     }
 }
