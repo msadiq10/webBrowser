@@ -110,6 +110,7 @@ namespace WebBrowserApp
             // 
             // historyPanel
             // 
+            this.historyPanel.AutoScroll = true;
             this.historyPanel.BackColor = System.Drawing.Color.White;
             this.historyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.historyPanel.Location = new System.Drawing.Point(938, 50);

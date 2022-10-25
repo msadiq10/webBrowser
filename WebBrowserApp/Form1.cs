@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -87,7 +88,7 @@ namespace WebBrowserApp
             string temp = "";
             StreamReader sr1 = new StreamReader(System.IO.Path.GetFullPath("home.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
             temp = sr1.ReadLine();
-            if (temp != "")
+            if (temp != null)
                 searchBox.Text = temp;
             else
                 searchBox.Text = "https://www.google.com/";
@@ -103,7 +104,8 @@ namespace WebBrowserApp
             int countStep = 0;
             int y = 10;
             url = searchText;
-            //searchBox.Text = url;
+            Queue historyQueue = new Queue();
+            Stack historyStack = new Stack();
             searchText = searchBox.Text.ToString();
             label3.Text = searchText;
             string urlNotFound = "http://www.macs.hw.ac.uk/~hwloidl/Courses/F21SC/httpstat.us/404";
@@ -143,22 +145,30 @@ namespace WebBrowserApp
             History historyForm = new History(this) { TopLevel = false };
             historyForm.FormBorderStyle = FormBorderStyle.None;
             StreamReader srh = new StreamReader(System.IO.Path.GetFullPath("history.txt").ToString().Replace((char)92, (char)47).Replace("/bin/Debug/netcoreapp3.1/", "/txtfiles/"));
-            historyPanel.Controls.Clear();
             while ((hisString = srh.ReadLine()) != null)
+            {
+                historyQueue.Enqueue(hisString);
+                if (countStep >= 20)
+                    historyQueue.Dequeue();
+                countStep += 1;
+            }
+            srh.Close();
+
+            historyPanel.Controls.Clear();
+            for (int i = 0; i < historyQueue.Count; i++)
             {
                 Label historyLabel = new Label();
                 historyForm.Controls.Add(historyLabel);
                 historyLabel.AutoSize = true;
                 historyLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-                historyLabel.Location = new System.Drawing.Point(10, y + countStep * 35);
-                historyLabel.Name = "history" + (countStep + 1).ToString();
+                historyLabel.Location = new System.Drawing.Point(10, y + i * 35);
+                historyLabel.Name = "history" + (i + 1).ToString();
                 historyLabel.Size = new System.Drawing.Size(67, 20);
                 historyLabel.TabIndex = 0;
-                historyLabel.Text = hisString;
+                historyLabel.Text = (string)historyQueue.ToArray()[historyQueue.Count - (i+1)];
                 historyLabel.Click += new System.EventHandler(historyForm.history_Click);
-                countStep += 1;
             }
-            srh.Close();
+
             historyPanel.Controls.Add(historyForm);
             historyForm.Show();
         }
@@ -179,6 +189,10 @@ namespace WebBrowserApp
             {
                 url = searchBox.Text;
                 load();
+                settingsPanel.Visible = false;
+                downloadPanel.Visible = false;
+                historyPanel.Visible = false;
+                favoritePanel.Visible = false;
             }
         }
 
